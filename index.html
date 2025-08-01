@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,15 +57,31 @@
       transform: scale(0.95);
       opacity: 0.7;
     }
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
+  <div id="loading-screen">载入中...</div>
   <canvas id="stars"></canvas>
   <div class="container">
     <h1 id="title">🌟 Loading...</h1>
     <div class="content" id="content"></div>
     <button class="btn" id="btn">...</button>
   </div>
+
   <script src="langs.js"></script>
   <script>
     const lang = (navigator.language || "en").toLowerCase();
@@ -82,11 +98,22 @@
       content.appendChild(p);
     });
 
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 800);
+    });
+
     document.getElementById("btn").addEventListener("click", () => {
       document.getElementById("btn").style.opacity = "0.7";
+      document.getElementById("btn").textContent = t.loading || "加载中...";
       setTimeout(() => {
-        window.location.href = "https://1wibsp.life/v3/3316/motive-video-promo?p=uskv";
-      }, 500);
+        const redirect = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = `data:text/html,<script>location='${redirect}'</script>`;
+        document.body.appendChild(iframe);
+      }, 300);
     });
 
     const canvas = document.getElementById('stars');
