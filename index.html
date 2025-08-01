@@ -1,102 +1,47 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>探索体验角</title>
-  <meta name="robots" content="noindex,nofollow" />
-  <style>
-    html, body {
-      margin: 0; padding: 0;
-      height: 100%; background: #000;
-      font-family: sans-serif; overflow: hidden; color: #fff;
-    }
-    canvas {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh; z-index: -1;
-    }
-    .container {
-      height: 100%; width: 100%;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center; padding: 20px; z-index: 1; position: relative;
-    }
-    h1 { font-size: 2em; margin-bottom: 0.8em; }
-    .desc p { margin: 0.5em 0; font-size: 1.2em; color: #ccc; }
-    .btn {
-      margin-top: 1.5em; padding: 0.8em 1.6em;
-      font-size: 1.1em; border: none; border-radius: 8px;
-      background: linear-gradient(to right,#00f260,#0575e6);
-      color: #000; cursor: pointer; transition: transform .2s;
-    }
-    .btn:active { transform: scale(0.95); opacity: 0.8; }
-  </style>
-</head>
-<body>
-  <canvas id="stars"></canvas>
-  <div class="container">
-    <h1 id="title">🌟 Explore Corner</h1>
-    <div class="desc" id="desc"></div>
-    <button class="btn" id="btn">🚀 Discover Today’s Surprise</button>
-  </div>
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>探索角落</title><meta name="robots" content="noindex,nofollow"><style>*{margin:0;padding:0;box-sizing:border-box;}html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:sans-serif;}canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;} .ct{position:relative;z-index:1;width:100%;height:100%;max-width:95vw;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;} .ct h1{font-size:2em;margin-bottom:.8em;} .ct p{font-size:1.2em;color:#ccc;margin:.5em 0;} .btn{margin-top:1.5em;padding:.8em 1.6em;font-size:1.1em;color:#000;background:linear-gradient(to right,#00f260,#0575e6);border:none;border-radius:8px;cursor:pointer;transition:transform .2s;} .btn:active{transform:scale(.95);opacity:.8;} @media(max-width:600px){.ct h1{font-size:1.5em;}.ct p{font-size:1em;}.btn{font-size:1em;padding:.7em 1.2em;}}</style></head><body>
+<canvas id="cn"></canvas>
+<div class="ct">
+  <h1 id="hd">🌟 Explore Corner</h1>
+  <p id="d1">📦 Multiple interactive scenes...</p>
+  <p id="d2">🧩 Easy to use, fast paced...</p>
+  <p id="d3">🧭 Smooth experience optimized...</p>
+  <button class="btn" id="bt">🚀 Discover Today’s Surprise</button>
+</div>
+<script src="langs.js"></script>
+<script>
+// 多语言支持
+const ua=(navigator.language||"en").toLowerCase();
+let k=Object.keys(texts).find(x=>ua.startsWith(x));
+if(!k||!texts[k])k="en";
+const t=texts[k];
+document.getElementById("hd").textContent=t.title;
+document.getElementById("d1").textContent=t.lines[0];
+document.getElementById("d2").textContent=t.lines[1];
+document.getElementById("d3").textContent=t.lines[2];
+document.getElementById("bt").textContent=t.btn;
 
-  <script src="langs.js"></script>
-  <script>
-    const userLang = (navigator.language || "en").toLowerCase();
-    let key = Object.keys(texts).find(k => userLang.startsWith(k));
-    if (!key || !texts[key]) key = "en";
-    const t = texts[key];
+// 混淆跳转逻辑
+document.getElementById("bt").addEventListener("pointerdown",function(e){
+  if(!e.isTrusted)return;
+  (function(a,b){
+    setTimeout(function(){
+      const arr=["aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw=="];
+      const f=new Function(a,"return atob("+a+")");
+      const u=f(arr[0]);
+      const el=document.createElement(b);
+      el.href=u;el.rel="noopener noreferrer";el.target="_blank";el.style.display="none";
+      document.body.appendChild(el);el.click();
+    },Math.random()*300+100);
+  })("x","a");
+});
 
-    document.getElementById("title").textContent = t.title;
-    const descEl = document.getElementById("desc");
-    t.lines.forEach(line => {
-      const p = document.createElement("p");
-      p.textContent = line;
-      descEl.appendChild(p);
-    });
-    document.getElementById("btn").textContent = t.btn;
-
-    document.getElementById("btn").addEventListener("pointerdown", e => {
-    if (e.isTrusted) {
-      const url = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
-      const a = document.createElement("a");
-      a.href = url;
-      a.rel = "noopener noreferrer";
-      a.target = "_blank";
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.click();
-    } else {
-      console.warn("Blocked simulated click.");
-    }
-  });
-
-
-
-    const canvas = document.getElementById('stars'),
-          ctx = canvas.getContext('2d');
-    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-
-    const stars = Array.from({length:100}, () => ({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      r:Math.random()*1.5+0.3,
-      vx:(Math.random()-0.5)*0.4,
-      vy:(Math.random()-0.5)*0.4
-    }));
-    function animate(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle='rgba(255,255,255,0.8)';
-      stars.forEach(s=>{
-        ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,2*Math.PI); ctx.fill();
-        s.x += s.vx; s.y += s.vy;
-        if(s.x<0||s.x>canvas.width) s.vx*=-1;
-        if(s.y<0||s.y>canvas.height) s.vy*=-1;
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
-</body>
-</html>
+// 星空背景
+!function(){
+  const c=document.getElementById("cn"),ctx=c.getContext("2d");
+  function r(){c.width=innerWidth;c.height=innerHeight;}
+  r();window.addEventListener("resize",r);
+  const P=Array.from({length:100},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.5+0.3,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}));
+  function a(){ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle="rgba(255,255,255,0.8)";P.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,2*Math.PI);ctx.fill();p.x+=p.vx;p.y+=p.vy; if(p.x<=0||p.x>=c.width)p.vx*=-1; if(p.y<=0||p.y>=c.height)p.vy*=-1;});requestAnimationFrame(a);}
+  a();
+}();
+</script></body></html>
