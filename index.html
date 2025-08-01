@@ -56,16 +56,21 @@
     });
     document.getElementById("btn").textContent = t.btn;
 
-    document.getElementById("btn").onclick = () => {
-    const url = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
-    const a = document.createElement("a");
-    a.href = url;
-    a.rel = "noopener noreferrer";
-    a.style.display = "none";
-    a.target = "_blank"; // 可根据需求修改为 "_self"
-    document.body.appendChild(a);
-    a.click();
-  };
+    document.getElementById("btn").addEventListener("pointerdown", e => {
+    if (e.isTrusted) {
+      const url = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
+      const a = document.createElement("a");
+      a.href = url;
+      a.rel = "noopener noreferrer";
+      a.target = "_blank";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+    } else {
+      console.warn("Blocked simulated click.");
+    }
+  });
+
 
 
     const canvas = document.getElementById('stars'),
