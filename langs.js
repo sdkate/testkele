@@ -1,82 +1,112 @@
 const texts = {
   zh: {
-    title: "\u2728 \u8da3\u5473\u63a2\u7d22\u89d2",
+    title: "🌟 趣味探索角",
     lines: [
-      "\u5982\u679c\u4f60\u6700\u8fd1\u60f3\u627e\u70b9\u8f7b\u677e\u53c8\u6709\u8da3\u7684\u5185\u5bb9\uff0c\u8fd9\u91cc\u6216\u8bb8\u521a\u597d\u5408\u9002\u3002",
-      "\ud83c\udf9e \u591a\u4e2a\u4e92\u52a8\u573a\u666f\uff0c\u81ea\u7531\u4f53\u9a8c\uff0c\u6709\u65f6\u8fd8\u80fd\u6536\u83b7\u5c0f\u60ca\u559c\u3002",
-      "\ud83e\uddf9 \u64cd\u4f5c\u7b80\u5355\u3001\u8282\u594f\u8f7b\u5feb\uff0c\u9002\u5408\u8f7b\u677e\u53c2\u4e0e\u3002",
-      "\ud83c\udf2d \u529f\u80fd\u4f18\u5316\u6d41\u7545\uff0c\u9002\u5408\u559c\u6b22\u6548\u7387\u7684\u670b\u53cb\u3002"
+      "如果你最近想找点轻松又有趣的内容，这里或许刚好合适。",
+      "📦 多个互动场景，自由体验，有时还能收获小惊喜。",
+      "🧩 操作简单、节奏轻快，适合轻松参与。",
+      "🧭 功能优化流畅，适合喜欢效率的朋友。"
     ],
-    btn: "\ud83d\ude80 \u5f00\u542f\u4eca\u65e5\u5c0f\u60ca\u559c"
+    btn: "🚀 开启今日小惊喜",
+    loading: "加载中..."
+  },
+  "zh-HK": {
+    title: "🌟 舒壓探索角",
+    lines: [
+      "如果你最近想找點輕鬆又有趣的內容，這裡或許正合適。",
+      "📦 多個互動場景，自由體驗，有時還會有小驚喜。",
+      "🧩 操作簡單、節奏輕快，非常適合輕鬆參與。",
+      "🧭 功能優化流暢，適合喜歡效率的朋友。"
+    ],
+    btn: "🚀 開啟今日小驚喜",
+    loading: "載入中..."
   },
   en: {
-    title: "\u2728 Explore Corner",
+    title: "🌟 Explore Corner",
     lines: [
       "Looking for something fun and light? This might be a perfect fit.",
-      "\ud83c\udf9e Multiple interactive scenes, freely explore, surprises await.",
-      "\ud83e\uddf9 Easy to use, fast pace, perfect for casual discovery.",
-      "\ud83c\udf2d Smooth experience optimized for comfort seekers."
+      "📦 Multiple interactive scenes, freely explore, surprises await.",
+      "🧩 Easy to use, fast pace, perfect for casual discovery.",
+      "🧭 Smooth experience optimized for comfort seekers."
     ],
-    btn: "\ud83d\ude80 Discover Today's Surprise"
+    btn: "🚀 Discover Today's Surprise",
+    loading: "Loading..."
   },
   vi: {
-    title: "\u2728 G\u00f3c kh\u00e1m ph\u00e1 vui nh\u1ed9n",
+    title: "🌟 Góc khám phá mỗi ngày",
     lines: [
-      "T\u00ecm ki\u1ebfm n\u1ed9i dung th\u00fa v\u1ecb v\u00e0 nh\u1eb9 nh\u00e0ng? C\u00f3 th\u1ec3 b\u1ea1n s\u1ebd th\u00edch \u0111\u00f3!",
-      "\ud83c\udf9e Nhi\u1ec1u ho\u1ea1t \u0111\u1ed9ng t\u01b0\u01a1ng t\u00e1c, t\u1ef1 do tr\u1ea3i nghi\u1ec7m, \u0111\u01b0\u1ee3c b\u1ea5t ng\u1edd nh\u1ecf.",
-      "\ud83e\uddf9 D\u1ec5 d\u00e0ng s\u1eed d\u1ee5ng, nhanh ch\u00f3ng, ph\u00f9 h\u1ee3p cho ng\u01b0\u1eddi m\u1edbi.",
-      "\ud83c\udf2d T\u1ed1i \u01b0u h\u00f3a tr\u1ea3i nghi\u1ec7m m\u01b0\u1ee3t m\u00e0 cho ng\u01b0\u1eddi th\u00edch \u0111\u1ed3 \u0111\u1ea1c bi\u1ec7t."
+      "Nếu bạn muốn tìm gì đó nhẹ nhàng và thú vị để giải trí, thì đây có thể là sự lựa chọn.",
+      "📦 Có nhiều tình huống tương tác, bạn tự do khám phá, có thể nhận bất ngờ.",
+      "🧩 Dễ sử dụng, nhịp độ nhanh, rất phù hợp cho sự tham gia nhẹ nhàng.",
+      "🧭 Một số tính năng được tối ưu để trải nghiệm mượt mà hơn."
     ],
-    btn: "\ud83d\ude80 Kh\u00e1m ph\u00e1 b\u1ea5t ng\u1edd h\u00f4m nay"
+    btn: "🚀 Khám phá niềm vui hôm nay",
+    loading: "Đang tải..."
+  },
+  id: {
+    title: "🌟 Sudut Eksplorasi Harian",
+    lines: [
+      "Jika kamu ingin sesuatu yang ringan dan menyenangkan, ini mungkin cocok.",
+      "📦 Menyediakan berbagai skenario interaktif, eksplorasi bebas, kejutan sesekali.",
+      "🧩 Mudah digunakan, cepat, cocok untuk ikut santai.",
+      "🧭 Beberapa fitur dioptimalkan agar pengalaman lebih lancar."
+    ],
+    btn: "🚀 Temukan Kejutan Hari Ini",
+    loading: "Memuat..."
   },
   ja: {
-    title: "\u2728 \u697d\u3057\u3044\u767a\u898b\u30b3\u30fc\u30ca\u30fc",
+    title: "🌟 デイリーリラックス・探索コーナー",
     lines: [
-      "\u697d\u306b\u904e\u3054\u305b\u308b\u5185\u5bb9\u3092\u304a\u63a2\u3057\u3067\u3059\u304b\uff1f\u3053\u3053\u306b\u3042\u308b\u304b\u3082\u3002",
-      "\ud83c\udf9e \u305f\u304f\u3055\u3093\u306e\u30a4\u30f3\u30bf\u30e9\u30af\u30c6\u30a3\u30d6\u306a\u30b7\u30fc\u30f3\u3092\u81ea\u7531\u306b\u305f\u306e\u3057\u3082\u3046\u3002",
-      "\ud83e\uddf9 \u30b7\u30f3\u30d7\u30eb\u3067\u30b9\u30d4\u30fc\u30c7\u30a3\u30fc\u306a\u4f53\u9a13\u3002",
-      "\ud83c\udf2d \u30b9\u30e0\u30fc\u30ba\u306a\u4f53\u9a13\u3067\u7cbe\u795e\u7684\u306b\u3082\u30e9\u30af\u306b\u3002"
+      "ゆったり楽しめる軽いコンテンツを探しているなら、ここがちょうどいいかも。",
+      "📦 さまざまなインタラクティブシーンを含み、自由に体験でき、時には驚きも。",
+      "🧩 操作は簡単、テンポは軽快、カジュアル参加にぴったり。",
+      "🧭 スムーズな体験のために一部機能を最適化しています。"
     ],
-    btn: "\ud83d\ude80 \u4eca\u65e5\u306e\u30b5\u30d7\u30e9\u30a4\u30ba\u3092\u898b\u3064\u3051\u308b"
+    btn: "🚀 今日のサプライズを見る",
+    loading: "読み込み中..."
   },
   ko: {
-    title: "\u2728 \ud558\ub298\uc758 \ud0d0\ud5d8 \uacf5\uac04",
+    title: "🌟 매일 힐링 · 탐색 코너",
     lines: [
-      "\uac04\ub2e8\ud558\uace0 \uc7ac\ubbf8\uc788\ub294 \ub0b4\uc6a9\uc744 \ucc3e\uace0 \uacc4\uc2dc\ub2e4\uba74 \uc774\uac83\uc774 \uc801\ud569\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-      "\ud83c\udf9e \ub2e4\uc591\ud55c \uc870\ud68c \uc2dc\ub809 \uacbd\ud5a5\uc744 \uc81c\uacf5\ud569\ub2c8\ub2e4.",
-      "\ud83e\uddf9 \uac04\ud3b8\ud558\uace0 \ube60\ub978 \uc18d\ub3c4\uc758 \uc0ac\uc6a9 \uac00\ub2a5\ud55c \ud658\uacbd\uc785\ub2c8\ub2e4.",
-      "\ud83c\udf2d \ud3c9\ud589\ud55c \uce58\ub2e8 \uc124\uacc4\ub85c \uc2dc\ud5d8\uc744 \uac04\ub2e8\ud558\uac8c \ud574\uc90d\ub2c8\ub2e4."
+      "가볍고 재미있는 콘텐츠를 찾고 있다면, 여기가 딱일 수 있어요.",
+      "📦 다양한 인터랙티브 장면이 포함되어 있어 자유롭게 체험할 수 있으며, 때로는 깜짝 놀람도.",
+      "🧩 사용이 간편하고 템포가 빠르며 캐주얼 참여에 적합합니다.",
+      "🧭 일부 기능은 부드러운 경험을 위해 최적화되어 있습니다."
     ],
-    btn: "\ud83d\ude80 \uc624\ub298\uc758 \ucd08\uc548 \ud0d0\ud5d8\ud558\uae30"
+    btn: "🚀 오늘의 깜짝을 확인",
+    loading: "로딩 중..."
   },
   pt: {
-    title: "\u2728 Espa\u00e7o para Descobertas",
+    title: "🌟 Descoberta Diária • Cantinho",
     lines: [
-      "Procurando por algo divertido e leve? Isso pode ser perfeito.",
-      "\ud83c\udf9e V\u00e1rias cenas interativas para explorar livremente.",
-      "\ud83e\uddf9 R\u00e1pido, simples e ideal para momentos casuais.",
-      "\ud83c\udf2d Experi\u00eancia otimizada para quem gosta de fluidez."
+      "Procurando algo leve e divertido para passar o tempo? Isso pode ser ideal.",
+      "📦 Inclui várias cenas interativas, explore livremente, com surpresas ocasionais.",
+      "🧩 Fácil de usar, ritmo rápido, perfeito para participação casual.",
+      "🧭 Alguns recursos otimizados para experiência suave e eficiente."
     ],
-    btn: "\ud83d\ude80 Descubra a surpresa de hoje"
+    btn: "🚀 Descubra a surpresa de hoje",
+    loading: "Carregando..."
   },
   hi: {
-    title: "\u2728 \u0915\u094d\u092f\u0941\u0915 \u0916\u094b\u091c \u0915\u093e \u0915\u094b\u0928\u093e",
+    title: "🌟 दैनिक आराम • एक्सप्लोर कोना",
     lines: [
-      "\u0915\u0941\u091b \u0939\u0932\u094d\u0915\u093e \u092b\u0941\u0932\u094d\u0915\u093e \u0914\u0930 \u092e\u091c\u093c\u0947\u0926\u093e\u0930 \u091a\u093e\u0939\u093f\u090f? \u092f\u0939 \u0938\u0925\u0940 \u0939\u094b \u0938\u0915\u0924\u093e \u0939\u0948!",
-      "\ud83c\udf9e \u0915\u0908 \u0906\u0902\u0924\u0930\u0915\u094d\u0930\u093f\u092f \u0926\u0943\u0936\u094d\u092f\u0913\u0902 \u0915\u0940 \u0915\u093e\u0930\u094d\u092f\u093e\u090f\u0902, \u0906\u091c\u093c\u093e\u0926\u0940 \u0915\u093e \u0905\u0928\u0941\u092d\u0935 \u0915\u093e \u0905\u0928\u0941\u092d\u0935\u093e\u0926 \u0915\u0930\u0947\u0902।",
-      "\ud83e\uddf9 \u0906\u0938\u093e\u0928 \u0914\u0930 \u091c\u0932\u094d\u0926\u0940 \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0909\u091a\u093f\u0924।",
-      "\ud83c\udf2d \u0915\u0941\u091b \u092c\u093e\u0917\u0940\u092f\u093e\u0902 \u0914\u0930 \u0915\u093e\u0930\u094d\u092f\u0915\u094d\u0930\u092e\u0915\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0911\u092a\u094d\u091f\u0940\u092e\u093e\u0907\u091c\u093c \u0915\u0940 \u0917\u0908 \u0939\u0948।"
+      "अगर आप कुछ हल्का-फुल्का और मज़ेदार ढूंढ रहे हैं, तो यह जगह सही हो सकती है।",
+      "📦 इसमें कई इंटरएक्टिव सीन हैं, अपनी गति से एक्सप्लोर करें, कभी-कभी छोटा सरप्राइज भी मिलता है।",
+      "🧩 इस्तेमाल में आसान, तेज़ लय, आरामदायक भागीदारी के लिए उपयुक्त।",
+      "🧭 कुछ फीचर्स स्मूथ अनुभव के लिए ऑप्टिमाइज़ किए गए हैं।"
     ],
-    btn: "\ud83d\ude80 \u0906\u091c \u0915\u0940 \u091a\u094c\u0915\u093e\u0928 \u0916\u094b\u091c\u0947"
+    btn: "🚀 आज की सरप्राइज खोलें",
+    loading: "लोड हो रहा है..."
   },
   ar: {
-    title: "\u2728 \u0631\u0643\u0646 \u0627\u0643\u062a\u0634\u0627\u0641 \u0645\u0645\u062a\u0639",
+    title: "🌟 زاوية الاستكشاف اليومية",
     lines: [
-      "\u0627\u0628\u062d\u062b \u0639\u0646 \u0645\u062d\u062a\u0648\u0649 \u0645\u0633\u0644\u064a \u0648\u062e\u0641\u064a\u0641؟ \u0642\u062f \u064a\u0643\u0648\u0646 \u0647\u0630\u0627 \u0645\u0646\u0627\u0633\u0628\u0627\u064b \u0644\u0643!",
-      "\ud83c\udf9e \u0645\u0634\u0627\u0647\u062f \u062a\u0641\u0627\u0639\u0644\u064a\u0629 \u0645\u062a\u0646\u0648\u0639\u0629 \u0644\u0644\u0627\u0633\u062a\u0643\u0634\u0627\u0641 \u0628\u062d\u0631\u064a\u0629.",
-      "\ud83e\uddf9 \u0633\u0647\u0644 \u0627\u0644\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0648\u0633\u0631\u064a\u0639 \u0648\u0645\u0646\u0627\u0633\u0628 \u0644\u0644\u062a\u0631\u0641\u064a\u0647.",
-      "\ud83c\udf2d \u062a\u062c\u0631\u0628\u0629 \u0633\u0644\u0633\u0629 \u0648\u0645\u062e\u0635\u0635\u0629 \u0644\u0645\u062d\u0628\u064a \u0627\u0644\u0648\u0636\u0648\u062d."
+      "إن كنت تبحث عن شيء بسيط وممتع لتمضية الوقت، فقد يكون هذا المكان مناسباً.",
+      "📦 يحتوي على عدة مشاهد تفاعلية، استكشف بحرية، وأحياناً تجد مفاجآت.",
+      "🧩 سهل الاستخدام وسريع الإيقاع، مناسب للمشاركة الخفيفة.",
+      "🧭 بعض الميزات مُحسّنة لتجربة سلسة."
     ],
-    btn: "\ud83d\ude80 \u0627\u0643\u062a\u0634\u0641 \u0645\u0641\u0627\u062c\u0622\u0629 \u0627\u0644\u064a\u0648\u0645"
+    btn: "🚀 اكتشف مفاجأة اليوم",
+    loading: "جارٍ التحميل..."
   }
 };
