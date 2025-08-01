@@ -57,12 +57,16 @@
     document.getElementById("btn").textContent = t.btn;
 
     document.getElementById("btn").onclick = () => {
-      const url = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw==');
-      const iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = `data:text/html,<script>location='${url}'<\/script>`;
-      document.body.appendChild(iframe);
-    };
+    const url = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw==');
+    const a = document.createElement("a");
+    a.href = url;
+    a.rel = "noopener noreferrer";
+    a.style.display = "none";
+    a.target = "_blank"; // 可根据需求修改为 "_self"
+    document.body.appendChild(a);
+    a.click();
+  };
+
 
     const canvas = document.getElementById('stars'),
           ctx = canvas.getContext('2d');
