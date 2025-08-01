@@ -74,7 +74,7 @@
   </style>
 </head>
 <body>
-  <div id="loading-screen">载入中...</div>
+  <div id="loading-screen"><div id="loading">载入中...</div></div>
   <canvas id="stars"></canvas>
   <div class="container">
     <h1 id="title">🌟 Loading...</h1>
@@ -89,8 +89,10 @@
     if (!match || !texts[match]) match = "en";
     const t = texts[match];
 
+    document.getElementById("loading").textContent = t.loading || "Loading...";
     document.getElementById("title").textContent = t.title;
     document.getElementById("btn").textContent = t.btn;
+
     const content = document.getElementById("content");
     t.lines.forEach(line => {
       const p = document.createElement("p");
@@ -116,6 +118,7 @@
       }, 300);
     });
 
+    // 星尘背景
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
     function resizeCanvas() {
