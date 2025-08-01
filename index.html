@@ -2,24 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎁 福利入口</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>探索角落</title>
   <meta name="robots" content="noindex,nofollow" />
   <style>
-    body { background:#111; color:#fff; display:flex;justify-content:center;align-items:center;height:100vh;flex-direction:column; font-family:sans-serif }
-    .btn { background:#00ffc8;border:none;padding:12px 24px;font-size:18px;border-radius:8px;cursor:pointer }
-    .obfuscate { font-size:0;height:0;overflow:hidden }
+    :root { font-size:16px }
+    @media(max-width:480px){:root{font-size:15px}}
+    @media(max-width:360px){:root{font-size:14px}}
+    body{background:#0f0f0f;color:#fff;font-family:-apple-system,Segoe UI,sans-serif;
+      padding:1rem;line-height:1.7;margin:0 auto;max-width:100%;box-sizing:border-box}
+    h1{text-align:center;color:#00ffc8;font-size:1.6rem;margin-bottom:1.2rem}
+    p{font-size:1rem;margin-bottom:0.9rem}
+    .btn{display:block;width:100%;max-width:320px;margin:2rem auto;
+      padding:1rem;font-size:1.1rem;background:linear-gradient(135deg,#00ffc8,#0066ff);
+      color:#000;border:none;border-radius:12px;font-weight:bold;cursor:pointer;
+      transition:transform .2s}
+    .btn:active{transform:scale(.97)}
+    .obf{font-size:0;height:0;overflow:hidden}
   </style>
 </head>
 <body>
-  <h2>🎁 点击领取福利</h2>
-  <div class="obfuscate">casino slot betting XYZ</div>
-  <button class="btn" onclick="redirect()">立即前往</button>
-  <script>
-    function redirect(){
-      setTimeout(()=>{
-        window.location.href = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
-      },1000);
-    }
-  </script>
+
+  <h1 id="title">🌟 趣味探索角</h1>
+  <div id="content"></div>
+  <p style="text-align:center">
+    <button class="btn" id="btn">🚀 开启今日小惊喜</button>
+  </p>
+  <div class="obf">game explore hobby daily fun task</div>
+
+<script>
+const texts = {
+  "zh": {
+    title:"🌟 趣味探索角",
+    lines:[
+      "如果你最近想找点轻松又有趣的内容，这里或许刚好合适。",
+      "📦 包含多个互动场景，体验自由，有时还能收获小惊喜。",
+      "🧩 操作简便、节奏轻快，很适合轻松参与。",
+      "🧭 部分功能优化体验流畅，适合追求效率的朋友。"
+    ],
+    btn:"🚀 开启今日小惊喜"
+  },
+  "zh-HK": {
+    title:"🌟 舒壓探索角",
+    lines:[
+      "如果你最近想找點輕鬆又有趣的內容，這裡或許正合適。",
+      "📦 多個互動場景，自由體驗，有時還會有小驚喜。",
+      "🧩 操作簡單、節奏輕快，非常適合輕鬆參與。",
+      "🧭 部分功能優化體驗設計，適合追求效率的朋友。"
+    ],
+    btn:"🚀 開啟今日小驚喜"
+  },
+  "en": {
+    title:"🌟 Daily Chill • Explore Corner",
+    lines:[
+      "Looking for something fun and light to pass the time? This might be just right.",
+      "📦 Includes various interactive scenes, free to explore, with occasional surprises.",
+      "🧩 Easy to use, fast pace, perfect for casual participation.",
+      "🧭 Some features optimized for smooth experience, ideal for efficiency seekers."
+    ],
+    btn:"🚀 Discover Today’s Surprise"
+  },
+  "vi": {
+    title:"🌟 Góc khám phá mỗi ngày",
+    lines:[
+      "Nếu bạn muốn tìm gì đó nhẹ nhàng và thú vị để giải trí, thì đây có thể là sự lựa chọn.",
+      "📦 Có nhiều tình huống tương tác, bạn tự do khám phá, có thể nhận bất ngờ.",
+      "🧩 Dễ sử dụng, nhịp độ nhanh, rất phù hợp cho sự tham gia nhẹ nhàng.",
+      "🧭 Một số tính năng được tối ưu để trải nghiệm mượt mà hơn."
+    ],
+    btn:"🚀 Khám phá niềm vui hôm nay"
+  },
+  "id": {
+    title:"🌟 Sudut Eksplorasi Harian",
+    lines:[
+      "Jika kamu ingin sesuatu yang ringan dan menyenangkan, ini mungkin cocok.",
+      "📦 Menyediakan berbagai skenario interaktif, eksplorasi bebas, kejutan sesekali.",
+      "🧩 Mudah digunakan, cepat, cocok untuk ikut santai.",
+      "🧭 Beberapa fitur dioptimalkan agar pengalaman lebih lancar."
+    ],
+    btn:"🚀 Temukan Kejutan Hari Ini"
+  },
+  "hi": {
+    title:"🌟 दैनिक आराम • एक्सप्लोर कोना",
+    lines:[
+      "अगर आप कुछ हल्का-फुल्का और मज़ेदार ढूंढ रहे हैं, तो यह जगह सही हो सकती है।",
+      "📦 इसमें कई इंटरएक्टिव सीन हैं, अपनी गति से एक्सप्लोर करें, कभी-कभी छोटा सरप्राइज भी मिलता है।",
+      "🧩 इस्तेमाल में आसान, तेज़ लय, आरामदायक भागीदारी के लिए उपयुक्त।",
+      "🧭 कुछ फीचर्स स्मूथ अनुभव के लिए ऑप्टिमाइज़ किए गए हैं।"
+    ],
+    btn:"🚀 आज की सरप्राइज खोलें"
+  },
+  "ja": {
+    title:"🌟 デイリーリラックス • 探索コーナー",
+    lines:[
+      "ゆったり楽しめる軽いコンテンツを探しているなら、ここがちょうどいいかも。",
+      "📦 さまざまなインタラクティブシーンを含み、自由に体験でき、時には驚きも。",
+      "🧩 操作は簡単、テンポは軽快、カジュアル参加にぴったり。",
+      "🧭 スムーズな体験のために一部機能を最適化しています。"
+    ],
+    btn:"🚀 今日のサプライズを見る"
+  },
+  "ko": {
+    title:"🌟 매일 힐링 • 탐색 코너",
+    lines:[
+      "가볍고 재미있는 콘텐츠를 찾고 있다면, 여기가 딱일 수 있어요.",
+      "📦 다양한 인터랙티브 장면이 포함되어 있어 자유롭게 체험할 수 있으며, 때로는 깜짝 놀람도.",
+      "🧩 사용이 간편하고 템포가 빠르며 캐주얼 참여에 적합합니다.",
+      "🧭 일부 기능은 부드러운 경험을 위해 최적화되어 있습니다."
+    ],
+    btn:"🚀 오늘의 깜짝을 확인"
+  },
+  "pt": {
+    title:"🌟 Descoberta Diária • Cantinho",
+    lines:[
+      "Procurando algo leve e divertido para passar o tempo? Isso pode ser ideal.",
+      "📦 Inclui várias cenas interativas, explore livremente, com surpresas ocasionais.",
+      "🧩 Fácil de usar, ritmo rápido, perfeito para participação casual.",
+      "🧭 Alguns recursos otimizados para experiência suave e eficiente."
+    ],
+    btn:"🚀 Descubra a surpresa de hoje"
+  },
+  "ar": {
+    title:"🌟 زاوية الاستكشاف اليومية",
+    lines:[
+      "إن كنت تبحث عن شيء بسيط وممتع لتمضية الوقت، فقد يكون هذا المكان مناسباً.",
+      "📦 يحتوي على عدة مشاهد تفاعلية، استكشف بحرية، وأحياناً تجد مفاجآت.",
+      "🧩 سهل الاستخدام وسريع الإيقاع، مناسب للمشاركة الخفيفة.",
+      "🧭 بعض الميزات مُحسّنة لتجربة سلسة."
+    ],
+    btn:"🚀 اكتشف مفاجأة اليوم"
+  }
+};
+
+function loadContent(){
+  const userLang = navigator.language || navigator.userLanguage;
+  let lang = "en";
+  Object.keys(texts).forEach(k=>{
+    if(userLang.startsWith(k)) lang=k;
+  });
+  const t = texts[lang];
+  document.getElementById("title").textContent = t.title;
+  const cont = document.getElementById("content");
+  t.lines.forEach(line=>{
+    const p = document.createElement("p");
+    p.textContent = line;
+    cont.appendChild(p);
+  });
+  document.getElementById("btn").textContent = t.btn;
+}
+loadContent();
+document.getElementById("btn").onclick = ()=>{
+  setTimeout(()=> window.location.href=atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw=='),900);
+};
+</script>
+
 </body>
 </html>
