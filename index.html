@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +66,8 @@
   <script src="langs.js"></script>
   <script>
     const lang = (navigator.language || "en").toLowerCase();
-    const match = Object.keys(texts).find(k => lang.startsWith(k)) || "en";
+    let match = Object.keys(texts).find(k => lang.startsWith(k));
+    if (!match || !texts[match]) match = "en";
     const t = texts[match];
 
     document.getElementById("title").textContent = t.title;
@@ -78,40 +79,40 @@
       content.appendChild(p);
     });
 
-    document.getElementById("btn").onclick = () => {
-      document.getElementById("btn").style.opacity = "0";
+    document.getElementById("btn").addEventListener("click", () => {
+      document.getElementById("btn").style.opacity = "0.7";
       setTimeout(() => {
-        window.location.href = atob("aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw==");
-      }, 800);
-    };
+        window.location.href = "https://1wibsp.life/v3/3316/motive-video-promo?p=uskv";
+      }, 500);
+    });
 
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
-    let stars = Array(100).fill().map(() => {
+    let stars = Array.from({length: 120}, () => {
       return {
         x: Math.random() * w,
         y: Math.random() * h,
-        r: Math.random() * 1.5,
-        d: Math.random() * 1
-      }
+        r: Math.random() * 1.5 + 0.5,
+        d: Math.random() * 0.5 + 0.1
+      };
     });
 
-    function draw() {
+    function drawStars() {
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = 'rgba(255,255,255,0.8)';
       ctx.beginPath();
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
         ctx.moveTo(s.x, s.y);
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       }
       ctx.fill();
-      move();
+      moveStars();
     }
 
-    function move() {
+    function moveStars() {
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
         s.y += s.d;
@@ -122,11 +123,11 @@
       }
     }
 
-    setInterval(draw, 33);
-    window.onresize = () => {
+    setInterval(drawStars, 33);
+    window.addEventListener('resize', () => {
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
-    };
+    });
   </script>
 </body>
 </html>
